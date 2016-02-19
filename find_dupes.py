@@ -1,3 +1,4 @@
+#! /usr/bin/env python
 '''find_dups.py
 
 This program looks at one or more databases of file information and generates

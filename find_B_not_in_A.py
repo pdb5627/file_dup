@@ -1,3 +1,4 @@
+#! /usr/bin/env python
 '''find_B_not_in_A.py
 
 This program looks at two databases of file information and generates

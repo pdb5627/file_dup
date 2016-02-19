@@ -1,3 +1,4 @@
+#! /usr/bin/env python
 '''mk_file_db.py
 
 This program creates the database of file information needed for file duplicate
