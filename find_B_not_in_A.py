@@ -14,6 +14,9 @@ parser = argparse.ArgumentParser()
 parser.add_argument('-v', '--verbose',
     action='store_true',
     help='Print extra debugging output,' )
+parser.add_argument('-1', '--no_dupes',
+    action='store_true',
+    help='Print extra debugging output,' )
 parser.add_argument('db_A',
                     help='Database A of file information')
 parser.add_argument('db_B',
@@ -25,7 +28,7 @@ def main(argv=None):
 
     args = parser.parse_args()
 
-    A_and_B_dict, A_only_dict, B_only_dict = file_dup.file_list_split(args.db_A, args.db_B)
+    A_and_B_dict, A_only_dict, B_only_dict = file_dup.file_list_split(args.db_A, args.db_B, no_dupes=args.no_dupes)
     for f in B_only_dict:
         print(f.filename)
     

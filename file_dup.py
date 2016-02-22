@@ -197,11 +197,15 @@ def find_dupes(db_list):
     dup_list = filter(lambda l: len(l) > 1, file_dict.values())
     return list(dup_list)
 
-def file_list_split(db_A, db_B):
-    '''Given two databases of files "A" and "B", returns three lists that
-       divide the sets of files into those that are in both databases, 
-       those that are only in database "A" and those that are only in
-       database "B".
+def file_list_split(db_A, db_B, no_dupes=False):
+    ''' Given two databases of files "A" and "B", returns three lists that
+        divide the sets of files into those that are in both databases, 
+        those that are only in database "A" and those that are only in
+        database "B".
+
+        If no_dupes is set to true, then only one filename per unique
+        hash is returned, otherwise all copies of the identical files
+        are returned.
    '''
 
     file_dict_A = file_list_to_hash_dict(get_from_db(db_A))
@@ -213,9 +217,9 @@ def file_list_split(db_A, db_B):
     A_only = file_set_A - A_and_B
     B_only = file_set_B - A_and_B
     
-    A_and_B_list = sum( (file_dict_A[k] for k in A_and_B), [] )
-    A_only_list = sum( (file_dict_A[k] for k in A_only), [] )
-    B_only_list = sum( (file_dict_B[k] for k in B_only), [] )
+    A_and_B_list = sum( (([file_dict_A[k][0]] if no_dupes else file_dict_A[k]) for k in A_and_B), [] )
+    A_only_list = sum( (([file_dict_A[k][0]] if no_dupes else file_dict_A[k]) for k in A_only), [] )
+    B_only_list = sum( (([file_dict_B[k][0]] if no_dupes else file_dict_b[k]) for k in B_only), [] )
     return (A_and_B_list, A_only_list, B_only_list)
     
     
