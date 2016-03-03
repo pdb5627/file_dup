@@ -1,5 +1,6 @@
-# Ignore sqlite databases that may be created during testing
+# Ignore sqlite databases & text files that may be created during testing
 *.db
+*.txt
 
 # Remained is Python gitignore template from Github
 
