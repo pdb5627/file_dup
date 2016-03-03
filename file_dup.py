@@ -219,7 +219,7 @@ def file_list_split(db_A, db_B, no_dupes=False):
     
     A_and_B_list = sum( (([file_dict_A[k][0]] if no_dupes else file_dict_A[k]) for k in A_and_B), [] )
     A_only_list = sum( (([file_dict_A[k][0]] if no_dupes else file_dict_A[k]) for k in A_only), [] )
-    B_only_list = sum( (([file_dict_B[k][0]] if no_dupes else file_dict_b[k]) for k in B_only), [] )
+    B_only_list = sum( (([file_dict_B[k][0]] if no_dupes else file_dict_B[k]) for k in B_only), [] )
     return (A_and_B_list, A_only_list, B_only_list)
     
     
